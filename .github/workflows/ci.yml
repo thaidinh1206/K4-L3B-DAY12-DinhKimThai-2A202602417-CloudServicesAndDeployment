@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Pytest (excluding CP5 cloud deploy test)
         env:
-          AGENT_API_KEY: ${{ secrets.AGENT_API_KEY }}
+          AGENT_API_KEY: ${{ secrets.AGENT_API_KEY }}ci-default-key-123
           REDIS_URL: fake://
         run: |
           pytest tests/ --ignore=tests/test_cp5.py -v
