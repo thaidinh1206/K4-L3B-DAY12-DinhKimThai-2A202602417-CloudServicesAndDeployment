@@ -24,12 +24,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Pytest (excluding CP5 cloud deploy test)
+      - name: Run Pytest (excluding CP5 cloud deploy test and docker build test)
         env:
           AGENT_API_KEY: ${{ secrets.AGENT_API_KEY }}ci-default-key-123
           REDIS_URL: fake://
         run: |
-          pytest tests/ --ignore=tests/test_cp5.py -v
+          pytest tests/ --ignore=tests/test_cp5.py -m "not docker" -v
 
   build:
     name: Build Docker Image
